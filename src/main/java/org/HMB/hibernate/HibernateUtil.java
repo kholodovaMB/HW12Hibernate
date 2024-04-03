@@ -1,9 +1,7 @@
-package org.HMB;
+package org.HMB.hibernate;
 
 import org.HMB.entity.Client;
 import org.HMB.entity.Planet;
-import org.HMB.property.PropertyReader;
-import org.flywaydb.core.Flyway;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 

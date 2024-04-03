@@ -12,8 +12,19 @@ repositories {
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    annotationProcessor 'org.projectlombok:lombok:1.18.26'
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.26'
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.7.2'
+    implementation 'org.flywaydb:flyway-core:9.20.1'
+    implementation group: 'org.hibernate.orm', name: 'hibernate-core', version: '6.4.4.Final'
 }
-
+jar {
+    manifest {
+        attributes 'Main-Class': 'org.HMB.Main'
+    }
+    from configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+}
 test {
     useJUnitPlatform()
 }

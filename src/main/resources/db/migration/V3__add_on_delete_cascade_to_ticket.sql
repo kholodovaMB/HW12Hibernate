@@ -1,0 +1,14 @@
+ALTER TABLE ticket
+DROP CONSTRAINT IF EXISTS ticket_client_id_fkey,
+ADD CONSTRAINT ticket_client_id_fkey FOREIGN KEY (CLIENT_ID)
+REFERENCES client(ID) ON DELETE CASCADE;
+
+ALTER TABLE ticket
+DROP CONSTRAINT IF EXISTS ticket_from_planet_id_fkey,
+ADD CONSTRAINT ticket_from_planet_id_fkey FOREIGN KEY (FROM_PLANET_ID)
+REFERENCES planet(ID) ON DELETE CASCADE;
+
+ALTER TABLE ticket
+DROP CONSTRAINT IF EXISTS ticket_to_planet_id_fkey,
+ADD CONSTRAINT ticket_to_planet_id_fkey FOREIGN KEY (TO_PLANET_ID)
+REFERENCES planet(ID) ON DELETE CASCADE;
