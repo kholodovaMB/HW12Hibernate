@@ -2,6 +2,7 @@ package org.HMB.hibernate;
 
 import org.HMB.entity.Client;
 import org.HMB.entity.Planet;
+import org.HMB.entity.Ticket;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -13,6 +14,7 @@ public class HibernateUtil {
         this.sessionFactory = new Configuration()
                 .addAnnotatedClass(Client.class)
                 .addAnnotatedClass(Planet.class)
+                .addAnnotatedClass(Ticket.class)
                 .buildSessionFactory();
     }
 

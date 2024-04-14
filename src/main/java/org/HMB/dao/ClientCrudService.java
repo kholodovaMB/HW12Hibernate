@@ -5,7 +5,6 @@ import org.HMB.hibernate.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
 
 import java.util.List;
 import java.util.Objects;
@@ -30,6 +29,14 @@ public class ClientCrudService {
     public Client findClientById(long id) {
         try (Session session = sessionFactory.openSession()) {
             return session.get(Client.class, id);
+        }
+    }
+
+    public Client findClientByIdWithTickets(long id) {
+        try (Session session = sessionFactory.openSession()) {
+            Client client = session.get(Client.class, id);
+            client.getTickets().forEach(ticket -> ticket.getId());
+            return client;
         }
     }
 
